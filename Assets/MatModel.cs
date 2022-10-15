@@ -4,20 +4,40 @@ using UnityEngine;
 
 public class MatModel : MonoBehaviour
 {
-    // Моменты энерции
-    public float i_xx, i_zz, i_xz;
-    // Прокции скоросте на оси
-    public float speed_x, speed_y;
-    // Масса автомобиля
-    public const int mass = 1500;
-    // Производные по времени от скорости
-    public float d_speed_x, d_speed_y;
-    // Угловое ускорение относительно оси Z_C
-    public float d_angle_speed_z;
-    // Продольные силы, действующие на колеса автомобиля
-    // тормозящие силы или силы, приведенные к двигателю и ускоряющие движение
-    public float t_x1_l, t_x2_l, t_x1_r, t_x2_r;
-    // Боковые силы, действующие на колеса автомобиля 
+    public float kp = 0.8f;
+    public float kd = 4;
+    public float ki = 3;
+    public float dt = 0.05f;
 
+    public const float x_0 = 2;
+    public const float y_0 = -1;
+    public const float a_o = Mathf.PI / 4;
+
+    public List<float> x, y,a; 
+
+    private void Start() {
+        // РґРѕР±Р°РІР»СЏРµРј РЅР°С‡Р°Р»СЊРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РІ Р»РёСЃС‚С‹ 
+        x.Add(x_0);
+        y.Add(y_0);
+        a.Add(a_o);
+
+        for (int n = 0; n < 600; n++)
+        {
+            a.Add(a[n] + kp * (x[n] - 1) * dt);
+            x.Add(x[n] + Mathf.Cos(a[n]) * dt);
+            y.Add(y[n] + Mathf.Sin(a[n]) * dt);
+        }
+    }
+
+    private void OnDrawGizmos() {
+        if(x.Count <= 1) return;
+        for (int i = 0; i < 500; i++)
+        {
+            Gizmos.DrawLine(new Vector3(x[i], y[i], 0), new Vector3(x[i+1], y[i+1], 0));
+        }
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(new Vector3(1,1,0),new Vector3(1, 1000, 0));
+    }
 
 }
+
