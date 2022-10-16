@@ -159,7 +159,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -200,7 +200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8.42, z: -10}
+  m_LocalPosition: {x: 1, y: 8.42, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 744099805}
   - component: {fileID: 744099804}
   m_Layer: 0
-  m_Name: 2
+  m_Name: Script
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -235,12 +235,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f0eefa369ae6f5429bf627dc8a896cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  p_regulator_Euler: 0
+  p_regulator_RungeKutty4: 0
+  pd_regulator_Euler: 0
   kp: 0.8
   kd: 4
   ki: 3
   dt: 0.05
   h: 0.05
   v: 10
+  x_0: 2
+  y_0: -1
+  a_o: 0.7853982
   x: []
   y: []
   a: []
